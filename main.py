@@ -1,10 +1,11 @@
 import json
 
-with open('data/data.json') as f:
+#update the variable acordding to changes in the json file
+with open('visual_processing/data/data.json') as f:
     data = json.load(f)
 
-del data['angle']
-data['angles'] = 40
+data['angle'] = 1 #modifies the data variable
 
-with open('data/data.json', 'w') as f:
+#writes out changes to the json file
+with open('visual_processing/data/data.json', 'w') as f:
     json.dump(data, f, indent=2)
