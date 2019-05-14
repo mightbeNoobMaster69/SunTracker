@@ -4,7 +4,7 @@ import json
 with open('visual_processing/data/data.json') as f:
     data = json.load(f)
 
-data['angle'] = 1 #modifies the data variable
+data['angle'] = 0 #modifies the data variable
 
 #writes out changes to the json file
 with open('visual_processing/data/data.json', 'w') as f:
