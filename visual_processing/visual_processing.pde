@@ -1,8 +1,8 @@
 JSONObject data;
-float diffAngle; //tiny changes in the angle
-float prevAngle;
-float wayToGo;
-float rotAngle = 0;
+float diffAngle; //difference passed beetween the old angle and the new one
+float prevAngle; //holds the last angle used
+float wayToGo; //rotation beetwen the old angle and the new one
+float rotAngle = 0; //the actual rotation applied
 
 void setup() {
   size(600, 400);
@@ -33,31 +33,30 @@ void draw(){
   
   if(angle != prevAngle){
     //new angle provided
-    diffAngle = 0;
-    wayToGo = angle - (prevAngle);
+    diffAngle = 0; //difference passed set to 0
+    wayToGo = angle - (prevAngle); //calculate the total difference beetween the angles
     
-    prevAngle = angle;
+    prevAngle = angle; //update the last angle
   }
   
-  if(wayToGo > 0){
-    if(diffAngle <= wayToGo){
-      diffAngle += 0.1;
-      rotAngle = rotAngle + 0.1;
+  if(wayToGo > 0){ //positive distance(rotation is getting higher)
+    if(diffAngle <= wayToGo){ //while the difference passed isnt equal to the total distance
+      diffAngle += 0.1; //update the diff passed
+      rotAngle = rotAngle + 0.1; //apply tiny rotation in the rot variable
     }
-    else{
-      
+    else{      
     }
   }
-  else{
-    if(diffAngle >= wayToGo){
-      diffAngle -= 0.1;
-      rotAngle = rotAngle - 0.1;
+  else{ //negative distance(rotation is getting lower)
+    if(diffAngle >= wayToGo){ //while the difference passed isnt equal to the total distance
+      diffAngle -= 0.1; //update diff passed
+      rotAngle = rotAngle - 0.1; //apply tiny rotation in the rot variable
     }
     else{
-    
     }
   }
   
+  //debugging stuff
   println("waytogo:" + wayToGo);
   println("diff angle:" + diffAngle);
   println("rot angle:"+ rotAngle);
