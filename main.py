@@ -36,7 +36,7 @@ class Sensor:
             self.x = data['rightx']
             self.y = data['righty']
 
-        self.value = math.sqrt( ((sunx - self.x)**2) + ((suny - self.y)**2) ) #use basic math to caluculate the direct distance between the sensor and the sun
+        self.value = math.sqrt( ((sunx - self.x)**2) + ((suny - self.y)**2) ) #use basic math to calculate the direct distance between the sensor and the sun
 
 #create the sensor objects
 leftSensor = Sensor('left')

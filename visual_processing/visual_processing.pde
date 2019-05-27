@@ -3,6 +3,7 @@ float diffAngle; //difference passed beetween the old angle and the new one
 float prevAngle; //holds the last angle used
 float wayToGo; //rotation beetwen the old angle and the new one
 float rotAngle = 0; //the actual rotation applied
+float velocityDiff = 0.1;
 
 void setup() {
   size(600, 400);
@@ -13,9 +14,9 @@ void setup() {
 }
 
 void draw(){
-  background(0);
+  background(0); 
   
-  //---------------------------------------------GETTING JSON DATA-------------------------------------------------
+  //---------------------------------------------GETTING DYNAMIC JSON DATA-------------------------------------------------
   data = loadJSONObject("data/data.json"); //load the json file
   
   float angle = data.getFloat("angle"); //angle in degrees
@@ -63,16 +64,16 @@ void draw(){
   
   if(wayToGo > 0){ //positive distance(rotation is getting higher)
     if(diffAngle <= wayToGo){ //while the difference passed isnt equal to the total distance
-      diffAngle += 0.1; //update the diff passed
-      rotAngle = rotAngle + 0.1; //apply tiny rotation in the rot variable
+      diffAngle += velocityDiff; //update the diff passed
+      rotAngle = rotAngle + velocityDiff; //apply tiny rotation in the rot variable
     }
     else{      
     }
   }
   else{ //negative distance(rotation is getting lower)
     if(diffAngle >= wayToGo){ //while the difference passed isnt equal to the total distance
-      diffAngle -= 0.1; //update diff passed
-      rotAngle = rotAngle - 0.1; //apply tiny rotation in the rot variable
+      diffAngle -= velocityDiff; //update diff passed
+      rotAngle = rotAngle - velocityDiff; //apply tiny rotation in the rot variable
     }
     else{
     }
@@ -94,7 +95,7 @@ void draw(){
   point(sunx, suny);
   
   //rotating the tracker according to the angle
-  translate(300,middleSensory);
+  translate(width/2, middleSensory);
   rotate(radians(rotAngle));  
   
   //drawing the tracker
@@ -103,8 +104,11 @@ void draw(){
   rect(-100, 0, 200, 5);
   
   //drawing the sensors
-  strokeWeight(15);
+  strokeWeight(18);
+  translate(-300, -300);
   point(leftSensorx, leftSensory);
-  
+  point(middleSensorx, middleSensory);
+  point(rightSensorx, rightSensory);
+  println(rightSensory);
   //---------------------------------------------------------------------------------------------
 }

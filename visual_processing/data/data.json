@@ -1,11 +1,11 @@
 {
+  "angle": 30,
   "sunx": 90, 
-  "suny": 90, 
-  "angle": 0, 
-  "leftx": 20, 
-  "rightx": 80, 
-  "lefty": 25, 
-  "righty": 25, 
+  "suny": 90,  
+  "leftx": 33, 
+  "lefty": 25,
   "middlex": 50, 
-  "middley": 25
+  "middley": 25, 
+  "rightx": 66,   
+  "righty": 25
 }
